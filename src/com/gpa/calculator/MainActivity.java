@@ -67,7 +67,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					if(saved != false)
 					{
 						Toast.makeText(this, "Thank you!", Toast.LENGTH_LONG).show();
-						Intent intent = new Intent(MainActivity.this, StudentDetails.class);
+						Intent intent = new Intent(MainActivity.this, DisplayGPA.class);
 						startActivity(intent);
 					}
 					else
