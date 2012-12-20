@@ -1,5 +1,6 @@
-package com.gpa.calculator;
+package utility;
 
+import android.R.array;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -13,18 +14,16 @@ public class dbConnect {
 	private final Context ourContext;
 	private SQLiteDatabase ourDatabase;
 	
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 4;
 	private static final String DATABASE_NAME = "GPACALC";
-	private static final String DATABASE_STUDENT_TABLE = "STUDENT";
 	
 	//Student Table Fields
+	private static final String DATABASE_STUDENT_TABLE = "STUDENT";
 	public static final String ST_USERID = "_id";
 	public static final String ST_USERNAME = "_studentName";
 	public static final String ST_PASSWORD = "_password";
 	public static final String ST_EMAIL = "_emailAddress";
 	public static final String ST_PROGRAMID = "_programId";
-
-
 	public static final String CREATE_STUDENT_TABLE = "CREATE TABLE "
 			+ DATABASE_STUDENT_TABLE + " ("
 			+ ST_USERID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -32,7 +31,25 @@ public class dbConnect {
 			+ ST_PASSWORD + " VARCHAR(30),"
 			+ ST_EMAIL + " VARCHAR(30)," 
 			+ ST_PROGRAMID + " VARCHAR(10)" + ");";
-
+	//end of Student Table variables
+	
+	//Marks Table Fields
+	private static final String DATABASE_MARKS_TABLE = "MARKS";
+	public static final String MK_ID = "_id";
+	public static final String MK_COURSEID = "_courseId";
+	public static final String MK_TESTNAME = "_testName";
+	public static final String MK_SCOREDMARKS = "_scoredMarks";
+	public static final String MK_FROMTOTAL = "_fromTotal";
+	public static final String MK_TOTALWEIGHT = "_totalWeight";
+	public static final String CREATE_MARKS_TABLE = "CREATE TABLE "
+			+ DATABASE_MARKS_TABLE + " ("
+			+ MK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+			+ MK_COURSEID + " INTEGER NOT NULL," 
+			+ MK_TESTNAME + " VARCHAR(30),"
+			+ MK_SCOREDMARKS + " FLOAT," 
+			+ MK_FROMTOTAL + " FLOAT," 
+			+ MK_TOTALWEIGHT + " FLOAT" + ");";
+	//end of Marks table variables
 
 	public static class DBHelper extends SQLiteOpenHelper {
 		//DB Helper class implementing SQLiteOpenHelper Class
@@ -45,13 +62,14 @@ public class dbConnect {
 		public void onCreate(SQLiteDatabase db) {
 
 			db.execSQL(CREATE_STUDENT_TABLE);
-			
+			db.execSQL(CREATE_MARKS_TABLE);
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
 			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_STUDENT_TABLE);
+			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_MARKS_TABLE);
 			onCreate(db);
 		}
 		
@@ -84,6 +102,7 @@ public class dbConnect {
 		cv.put(ST_PROGRAMID, programId);
 		
 		return ourDatabase.insert(DATABASE_STUDENT_TABLE, null, cv);
+		
 	}
 
 	public String getStudentData() {
@@ -107,5 +126,26 @@ public class dbConnect {
 		
 		return retData;
 	}
+
+	public long insertMarks(int _courseId, String _testName,float _scoredMarks, float _fromTotal, float _totalWeight) 
+	{
+		ContentValues cv = new ContentValues();
+		cv.put(MK_COURSEID, _courseId);
+		cv.put(MK_TESTNAME, _testName);
+		cv.put(MK_SCOREDMARKS, _scoredMarks);
+		cv.put(MK_FROMTOTAL, _fromTotal);
+		cv.put(MK_TOTALWEIGHT, _totalWeight);
+		
+		return ourDatabase.insert(DATABASE_MARKS_TABLE, null, cv);
+		
+	}
+	
+	public array getTotalMarks(int courseId)
+	{
+		return null;
+		
+	}
+	
+	
 
 }

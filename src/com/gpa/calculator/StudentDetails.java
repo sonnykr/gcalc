@@ -1,5 +1,6 @@
 package com.gpa.calculator;
 
+import utility.dbConnect;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
