@@ -1,4 +1,4 @@
-package utility;
+package com.gpa.calculator.utility;
 
 import android.R.array;
 import android.content.ContentValues;
@@ -114,7 +114,7 @@ public class dbConnect {
 		
 		int iRow = c.getColumnIndex(ST_USERID);
 		int iUserName = c.getColumnIndex(ST_USERNAME);
-		int iPassword = c.getColumnIndex(ST_PASSWORD);
+		//int iPassword = c.getColumnIndex(ST_PASSWORD);
 		int iEmail = c.getColumnIndex(ST_EMAIL);
 		int iProgram = c.getColumnIndex(ST_PROGRAMID);
 		

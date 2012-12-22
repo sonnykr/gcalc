@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".StudentDetails"></activity>
-        <activity android:name=".DisplayGPA"></activity>
+        <activity android:name=".AddMarks"></activity>
     </application>
 
 </manifest>
