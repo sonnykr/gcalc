@@ -8,7 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class dbConnect {
+public class DBConnect {
 
 	private DBHelper ourHelper;
 	private final Context ourContext;
@@ -75,13 +75,13 @@ public class dbConnect {
 		
 	}
 	
-	public dbConnect(Context c)
+	public DBConnect(Context c)
 	{
 		//constructor of the main class
 		ourContext = c;
 	}
 	
-	public dbConnect open() throws SQLException
+	public DBConnect open() throws SQLException
 	{
 		ourHelper = new DBHelper(ourContext);
 		ourDatabase = ourHelper.getWritableDatabase();

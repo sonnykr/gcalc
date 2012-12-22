@@ -1,7 +1,6 @@
 package com.gpa.calculator;
 
-import com.gpa.calculator.presentation.R;
-import com.gpa.calculator.utility.dbConnect;
+import com.gpa.calculator.utility.DBConnect;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -9,7 +8,7 @@ import android.widget.TextView;
 public class StudentDetails extends Activity {
 
 	TextView studentDetails;
-	dbConnect dbAccess;
+	DBConnect dbAccess;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +17,7 @@ public class StudentDetails extends Activity {
 		setContentView(R.layout.student_profile);
 		
 		studentDetails = (TextView) findViewById(R.id.tvStudentDetails);
-		dbAccess = new dbConnect(this);
+		dbAccess = new DBConnect(this);
 		dbAccess.open();
 		String detailsFromSql = dbAccess.getStudentData();
 		dbAccess.close();
