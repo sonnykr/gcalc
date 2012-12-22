@@ -2,7 +2,7 @@ package com.gpa.calculator.models;
 
 import android.app.Application;
 import android.content.Context;
-import com.gpa.calculator.utility.dbConnect;
+import com.gpa.calculator.utility.DBConnect;
 
 public class Marks extends Application {
 
@@ -13,7 +13,7 @@ public class Marks extends Application {
 	private float _totalWeight;
 
 	private static Context thisClass;
-	private dbConnect dba;
+	private DBConnect dba;
 
 	public int get_courseId() {
 		return _courseId;
@@ -58,7 +58,7 @@ public class Marks extends Application {
 	public boolean insertMarks()
 	{
 		thisClass = getApplicationContext();
-		dba = new dbConnect(thisClass);
+		dba = new DBConnect(thisClass);
 		dba.open();
 		//Code to insert values to Marks table
 		dba.insertMarks(_courseId, _testName, _scoredMarks, _fromTotal, _totalWeight);
