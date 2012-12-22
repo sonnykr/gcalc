@@ -13,7 +13,7 @@ public class dbConnect {
 	private final Context ourContext;
 	private SQLiteDatabase ourDatabase;
 	
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 4;
 	private static final String DATABASE_NAME = "GPACALC";
 	private static final String DATABASE_STUDENT_TABLE = "STUDENT";
 	
