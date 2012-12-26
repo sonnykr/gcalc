@@ -1,4 +1,4 @@
-package utility;
+package com.gpa.calculator.utility;
 
 import android.R.array;
 import android.content.ContentValues;
@@ -8,7 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class dbConnect {
+public class DBConnect {
 
 	private DBHelper ourHelper;
 	private final Context ourContext;
@@ -75,13 +75,13 @@ public class dbConnect {
 		
 	}
 	
-	public dbConnect(Context c)
+	public DBConnect(Context c)
 	{
 		//constructor of the main class
 		ourContext = c;
 	}
 	
-	public dbConnect open() throws SQLException
+	public DBConnect open() throws SQLException
 	{
 		ourHelper = new DBHelper(ourContext);
 		ourDatabase = ourHelper.getWritableDatabase();
@@ -114,7 +114,7 @@ public class dbConnect {
 		
 		int iRow = c.getColumnIndex(ST_USERID);
 		int iUserName = c.getColumnIndex(ST_USERNAME);
-		int iPassword = c.getColumnIndex(ST_PASSWORD);
+		//int iPassword = c.getColumnIndex(ST_PASSWORD);
 		int iEmail = c.getColumnIndex(ST_EMAIL);
 		int iProgram = c.getColumnIndex(ST_PROGRAMID);
 		
