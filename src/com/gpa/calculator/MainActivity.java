@@ -37,14 +37,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-			// TODO Auto-generated method stub
 			Object o = courseList.getItemAtPosition(position);
 			String courseName = (String)o;
-			Toast.makeText(MainActivity.this, courseName, Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent(MainActivity.this, AddMarks.class);
+			Intent intent = new Intent(getApplicationContext(), AddMarks.class);
 			intent.putExtra("CourseName", courseName);
 			startActivityForResult(intent, ADDMARKS);
-		}
+			
+			}
 		});
 		
 		addNewCourse = (TextView) findViewById(R.id.tvAddNewCourse);
@@ -54,12 +53,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 	
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.tvAddNewCourse:
 			gpaLabel.setText("Add New Course Clicked!");
