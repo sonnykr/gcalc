@@ -62,6 +62,7 @@ public class AddMarks extends Activity implements OnClickListener{
 			 	long feed = mark.insertMarks();
 			 	courseName.setText("Response: " + feed);
 			 	
+			 	
 			} catch (Exception e) {
 				// TODO: handle exception
 				courseName.setText(e.toString());

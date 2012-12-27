@@ -55,7 +55,6 @@ public class Marks extends Application {
 
 	public long insertMarks()
 	{
-		
 		DBConnect dba = new DBConnect(getApplicationContext());
 		dba.open();
 		//Code to insert values to Marks table
