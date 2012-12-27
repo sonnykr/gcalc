@@ -14,7 +14,7 @@ public class DBConnect {
 	private final Context ourContext;
 	private SQLiteDatabase ourDatabase;
 	
-	private static final int DATABASE_VERSION = 4;
+	private static final int DATABASE_VERSION = 5;
 	private static final String DATABASE_NAME = "GPACALC";
 	
 	//Student Table Fields
@@ -140,9 +140,28 @@ public class DBConnect {
 		
 	}
 	
-	public array getTotalMarks(int courseId)
+	public String getTotalMarks()
 	{
-		return null;
+		// Get Student Details from Student table
+				String retData = "";
+				
+				String[] columns = new String[] {MK_COURSEID, MK_TESTNAME,
+													MK_SCOREDMARKS, MK_FROMTOTAL, MK_TOTALWEIGHT};
+				Cursor c = ourDatabase.query(DATABASE_STUDENT_TABLE, columns, null, null, null, null, null);
+				
+				int iRow = c.getColumnIndex(MK_COURSEID);
+				int iTestName = c.getColumnIndex(MK_TESTNAME);
+				int iScoredMarks = c.getColumnIndex(MK_SCOREDMARKS);
+				int iFromTotal = c.getColumnIndex(MK_FROMTOTAL);
+				int iTotalWeight = c.getColumnIndex(MK_TOTALWEIGHT);
+				
+				for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext())
+				{
+					retData += c.getString(iRow) + " " + c.getString(iTestName) + " " + c.getString(iScoredMarks)
+										+ " " + c.getString(iFromTotal) + " " + c.getString(iTotalWeight) + "\n";
+				}
+				
+				return retData;
 		
 	}
 	
