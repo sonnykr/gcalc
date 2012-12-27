@@ -47,13 +47,12 @@ public class AddMarks extends Activity implements OnClickListener{
 
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		Marks mark = new Marks();
+		Marks mark = new Marks(getApplicationContext());
 		
 		switch (v.getId()) {
 		case R.id.bSaveMark:
 			try{
 				//long result = 0;
-			 	
 			 	mark.set_courseId(1);
 			 	mark.set_testName(testName.getText().toString());
 			 	mark.set_ScoredMarks(Float.parseFloat(scoredMarks.getText().toString()));
